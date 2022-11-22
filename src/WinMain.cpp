@@ -34,7 +34,7 @@ INT WINAPI wWinMain(_In_ [[maybe_unused]] HINSTANCE instance,
 	_In_ [[maybe_unused]] PWSTR cmd_line,
 	_In_ [[maybe_unused]] INT cmd_show) {
 
-	srand(time(NULL));
+	srand(time(nullptr));
 	WNDCLASSEX wcex;
 	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
@@ -42,12 +42,12 @@ INT WINAPI wWinMain(_In_ [[maybe_unused]] HINSTANCE instance,
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = instance;
-	wcex.hIcon = NULL;
+	wcex.hIcon = nullptr;
 	wcex.hCursor = LoadCursor(instance, IDC_ARROW);
 	wcex.hbrBackground = nullptr, //static_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
-		wcex.lpszMenuName = NULL;
+		wcex.lpszMenuName = nullptr;
 	wcex.lpszClassName = TEXT("Template Window Class");
-	wcex.hIconSm = NULL;
+	wcex.hIconSm = nullptr;
 
 	RegisterClassEx(&wcex);
 
@@ -60,20 +60,20 @@ INT WINAPI wWinMain(_In_ [[maybe_unused]] HINSTANCE instance,
 		// Size and position
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 
-		NULL, // Parent window
-		NULL, // Menu
+		nullptr, // Parent window
+		nullptr, // Menu
 		wcex.hInstance, // Instance handle
-		NULL // Additional application data
+		nullptr // Additional application data
 	);
 
-	if (hwnd == NULL) {
+	if (hwnd == nullptr) {
 		return 1;
 	}
 
 	ShowWindow(hwnd, cmd_show);
 
 	MSG msg = {};
-	while (BOOL rv = GetMessage(&msg, NULL, 0, 0) != 0) {
+	while (BOOL rv = GetMessage(&msg, nullptr, 0, 0) != 0) {
 		if (rv < 0) {
 			DestroyWindow(hwnd);
 			return 1;
